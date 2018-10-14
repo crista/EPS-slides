@@ -14,6 +14,7 @@ print (IF (FALSE) ("true") ("false"))
 ZERO  = lambda f: lambda x: x 
 ONE   = lambda f: lambda x: f(x)
 TWO   = lambda f: lambda x: f(f(x))
+THREE = lambda f: lambda x: f(f(f(x)))
 FOUR  = lambda f: lambda x: f(f(f(f(x))))
 FIVE  = lambda f: lambda x: f(f(f(f(f(x)))))
 SIX   = lambda f: lambda x: f(f(f(f(f(f(x))))))
