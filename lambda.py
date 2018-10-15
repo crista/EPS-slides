@@ -62,6 +62,10 @@ print (TAIL (CONS ("head") ("tail")))
 
 
 # Combinators and recursion
+# Example of recursive function:
+factorial = lambda n: 1 if n <= 0 else n*factorial(n-1)
+print("factorial(5)=" + str(factorial(5)))
+
 U = lambda f: f(f)
 test = lambda x: "called"
 U(test)
@@ -69,7 +73,7 @@ U(test)
 
 # Example
 fact = U(lambda f: lambda n: 1 if n <= 0 else n*(U(f))(n-1))
-print (fact(5))
+print ("fact(5)=" + str(fact(5)))
 
 # Y combinator
 # Y(F) = x   such that   x = F(x)
