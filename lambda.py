@@ -87,17 +87,18 @@ fact = Y(lambda f: lambda n: 1 if n <= 0 else n * f(n-1))
 
 print (fact(6))
 
-
+# Y combinator, but still calls U by name
 Y = U(lambda h: lambda F: F(lambda x: U(h)(F)(x)))
 fact = Y(lambda f: lambda n: 1 if n <= 0 else n * f(n-1))
 print (fact(7))
 
-
+# Finally, the best form of the Y combinator, no free variables
 Y = (lambda h: lambda F: F(lambda x: h(h)(F)(x)))(lambda h: lambda F: F(lambda x: h(h)(F)(x)))
+
 fact = Y(lambda f: lambda n: 1 if n <= 0 else n * f(n-1))
 print (fact(8))
 
-# fact(5) in pur lambda calculus
+# fact(5) in pure lambda calculus
 R1 = (((lambda f: (((f)((lambda f: ((lambda z: (((f)(((f)(((f)(((f)(((f)(z)))))))))))))))))))((((((lambda y: ((lambda F: (((F)((lambda x: (((((((y)(y)))(F)))(x)))))))))))((lambda y: ((lambda F: (((F)((lambda x: (((((((y)(y)))(F)))(x)))))))))))))((lambda f: ((lambda n: ((((((((((((lambda n: (((((n)((lambda _: ((lambda t: ((lambda f: (((f)((lambda void: (void)))))))))))))((lambda t: ((lambda f: (((t)((lambda void: (void)))))))))))))((((((lambda n: ((lambda m: (((((m)((lambda n: ((lambda f: ((lambda z: (((((((n)((lambda g: ((lambda h: (((h)(((g)(f)))))))))))((lambda u: (z)))))((lambda u: (u)))))))))))))(n)))))))(n)))((lambda f: ((lambda z: (z)))))))))((lambda _: ((((lambda n: (((((n)((lambda _: ((lambda t: ((lambda f: (((f)((lambda void: (void)))))))))))))((lambda t: ((lambda f: (((t)((lambda void: (void)))))))))))))((((((lambda n: ((lambda m: (((((m)((lambda n: ((lambda f: ((lambda z: (((((((n)((lambda g: ((lambda h: (((h)(((g)(f)))))))))))((lambda u: (z)))))((lambda u: (u)))))))))))))(n)))))))((lambda f: ((lambda z: (z)))))))(n)))))))))((lambda _: ((lambda t: ((lambda f: (((f)((lambda void: (void)))))))))))))((lambda _: ((lambda f: ((lambda z: (((f)(z)))))))))))((lambda _: ((((((lambda n: ((lambda m: ((lambda f: ((lambda z: (((((m)(((n)(f)))))(z)))))))))))(n)))(((f)((((((lambda n: ((lambda m: (((((m)((lambda n: ((lambda f: ((lambda z: (((((((n)((lambda g: ((lambda h: (((h)(((g)(f)))))))))))((lambda u: (z)))))((lambda u: (u)))))))))))))(n)))))))(n)))((lambda f: ((lambda z: (((f)(z))))))))))))))))))))))))
 
 print (npy(R1))
